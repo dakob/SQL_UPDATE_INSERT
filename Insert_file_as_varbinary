@@ -1,0 +1,22 @@
+INSERT INTO [dbo].[Documents]
+           ([DocumentId]
+           ,[SubsetConfigId]
+           ,[Technology]
+           ,[Content]
+           ,[MimeType]
+           ,[FileName]
+           ,[IsDefault]
+           ,[IsAddedToTender]
+           ,[IsGenerated])
+     VALUES
+           (NEWID(),
+           NULL,
+           2,
+           (SELECT * FROM OPENROWSET(BULK N'C:\Users\pldakob\OneDrive - ABB\CDP\R&D\EMF-E.Dokumentacja z konfiguratora.Przasnysz\Rating plate.pdf', SINGLE_BLOB) as Content),
+           'application/pdf',
+           'Rating plate.pdf',
+           1,
+           0,
+           0)
+
+GO
